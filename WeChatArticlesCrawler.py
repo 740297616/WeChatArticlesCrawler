@@ -1,6 +1,6 @@
 """
 网页爬取「fakied」、「token」、「cookie」、「user-agent」
-Fiddler爬取「Key」、「Pass_ticket」、「appmasg_token」、「Cookie」、「User-Agent」
+Fiddler爬取「Key」、「Pass_ticket」、「appmsg_token」、「Cookie」、「User-Agent」
 
 Step1:利用微信公众号平台获取指定公众号的文章列表
 Step2：模拟微信访问文章并提取信息
@@ -103,7 +103,7 @@ def getAllInfo(url):
         time.sleep(random.randint(1, 10))
         if "app_msg_list" in content_json:
             for item in content_json["app_msg_list"]:
-                timestamp = item['create_time']
+                timestamp = item['create_time'] # 将时间戳转换为Y-M-D格式
                 time_local = time.localtime(timestamp)
                 spider_url = item['link']
                 readNum, likeNum,old_like_num = getMoreInfo(spider_url)
